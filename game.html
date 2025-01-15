@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWorld Games</title>
+    <style>
+    * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #5aad5f, #3f71ee, #5aad5f, #3f71ee);
+            color: #fff;
+            width: 100%;
+            height: 100vh;
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .container {
+            height: fit-content;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0%;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .games-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            text-align: center;
+        }
+
+        .game-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .game-links a {
+            position: relative;
+            width: 240px;
+            text-decoration: none;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .game-links a img {
+            width: 100%;
+            height: 80%;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .game-links a span {
+            display: block;
+            background: #004f2d;
+            padding: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 0 0 15px 15px;
+        }
+
+        .game-links a:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .game-links a::before {
+            content: '🎮';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 2rem;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-nav">
+        <nav>
+            <img src="images/logo.png" class="logo" alt="EcoWorld Logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research & Resources</a></li>
+                <li><a href="fun.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="games-section">
+
+            <div class="game-links">
+                <a class="box" target="_blank" href="https://wordwall.net/play/84540/986/145?ref=embed-image">
+                    <img src="https://screens.cdn.wordwall.net/200/12685b68fcf34376b2471dabbaa09fa9_0" alt="Matching Card">
+                    <span >Matching Card</span>
+                </a>
+
+                <a target="_blank" href="https://wordwall.net/play/84555/079/771?ref=embed-image">
+                    <img src="/images/wordguess.png" alt="Guess Word">
+                    <span >Guess Word</span>
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

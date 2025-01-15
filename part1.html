@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOWORLD Quiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(45deg, #193d19, #0e255e, #1c361e, #0d1833);
+            color: #fff;
+            height: 200vh;
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        form {
+            background-color: rgba(114, 98, 98, 0.479);
+            border-radius: 10px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .question {
+            margin-bottom: 20px;
+            color: #9dffff;
+        }
+        .question h3 {
+            margin-bottom: 10px;
+        }
+        .radio-container {
+            --main-color: #fcd600;
+            --main-color-opacity: #f7e4791c;
+            --total-radio: 3;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-left: 0.5rem;
+        }
+        .radio-container input {
+            cursor: pointer;
+            appearance: none;
+        }
+        .radio-container .glider-container {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            background: linear-gradient(
+                0deg,
+                rgba(0, 0, 0, 0) 0%,
+                rgba(27, 27, 27, 1) 50%,
+                rgba(0, 0, 0, 0) 100%
+            );
+            width: 1px;
+        }
+        .radio-container .glider-container .glider {
+            position: relative;
+            height: calc(100% / var(--total-radio));
+            width: 100%;
+            background: linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0) 0%,
+            var(--main-color) 50%,
+            rgba(0, 0, 0, 0) 100%
+            );
+            transition: transform 0.5s cubic-bezier(0.37, 1.95, 0.66, 0.56);
+        }
+
+        .radio-container .glider-container .glider::before {
+        content: "";
+        position: absolute;
+        height: 60%;
+        width: 500%;
+        top: 50%;
+        transform: translateY(-50%);
+        background: var(--main-color);
+        filter: blur(10px);
+        }
+
+        .radio-container .glider-container .glider::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 300px;
+        background: linear-gradient(
+          90deg,
+          var(--main-color-opacity) 0%,
+          rgba(0, 0, 0, 0) 100%
+        );
+        }
+
+        .radio-container label {
+            cursor: pointer;
+            padding: 1rem;
+            position: relative;
+            color: rgb(255, 255, 255);
+            transition: all 0.3s ease-in-out;
+        }
+        .radio-container input:checked + label {
+            color: var(--main-color);
+        }
+        .radio-container input:nth-of-type(1):checked ~ .glider-container .glider {
+            transform: translateY(0);
+        }
+        .radio-container input:nth-of-type(2):checked ~ .glider-container .glider {
+            transform: translateY(100%);
+        }
+        .radio-container input:nth-of-type(3):checked ~ .glider-container .glider {
+            transform: translateY(200%);
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+        }
+        .submit-button {
+            background-color: #13aa52;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .submit-button:hover {
+            background-color: #0e8b42;
+        }
+        .back-button {
+            background-color: #aa1313;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .back-button:hover {
+            background-color: #8b6e0e;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conservation Physiology Quiz</h1>
+    <form id="quiz-form">
+        <div class="question">
+            <h3>1. What is the primary goal of using conservation physiology in ecological restoration?</h3>
+            <div class="radio-container">
+                <input id="q1-option1" type="radio" name="q1" value="Increasing economic gains from tourism">
+                <label for="q1-option1">Increasing economic gains from tourism</label>
+                <input id="q1-option2" type="radio" name="q1" value="Identifying species-specific physiological needs">
+                <label for="q1-option2">Identifying species-specific physiological needs</label>
+                <input id="q1-option3" type="radio" name="q1" value="Reducing restoration project costs">
+                <label for="q1-option3">Reducing restoration project costs</label>
+                <div class="glider-container">
+                    <div class="glider"></div>
+                </div>
+            </div>
+            <div class="answer-feedback" id="feedback-q1"></div>
+        </div>
+        
+        <div class="question">
+    <h3>2. Which of the following is an example of an ecosystem service enhanced by conservation physiology?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q2-a" name="q2" value="Transportation services">
+        <label for="q2-a">Transportation services</label>
+        <input type="radio" id="q2-b" name="q2" value="Urban infrastructure development">
+        <label for="q2-b">Urban infrastructure development</label>
+        <input type="radio" id="q2-c" name="q2" value="Pollination by insects">
+        <label for="q2-c">Pollination by insects</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q2"></div>
+</div>
+
+<div class="question">
+    <h3>3. How does conservation physiology contribute to species reintroduction programs?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q3-a" name="q3" value="By creating artificial habitats for all species">
+        <label for="q3-a">By creating artificial habitats for all species</label>
+        <input type="radio" id="q3-b" name="q3" value="By studying species’ physiological stress markers before release">
+        <label for="q3-b">By studying species’ physiological stress markers before release</label>
+        <input type="radio" id="q3-c" name="q3" value="By removing predators from ecosystems">
+        <label for="q3-c">By removing predators from ecosystems</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q3"></div>
+</div>
+
+<div class="question">
+    <h3>4. What kind of data is typically used in conservation physiology to improve habitat suitability models?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q4-a" name="q4" value="Physiological tolerances like temperature and humidity thresholds">
+        <label for="q4-a">Physiological tolerances like temperature and humidity thresholds</label>
+        <input type="radio" id="q4-b" name="q4" value="Tourist activity reports">
+        <label for="q4-b">Tourist activity reports</label>
+        <input type="radio" id="q4-c" name="q4" value="Financial budgets for restoration projects">
+        <label for="q4-c">Financial budgets for restoration projects</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q4"></div>
+</div>
+
+<div class="question">
+    <h3>5. Which advanced technology is commonly used alongside conservation physiology to monitor ecosystem health?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q5-a" name="q5" value="Virtual reality">
+        <label for="q5-a">Virtual reality</label>
+        <input type="radio" id="q5-b" name="q5" value="Blockchain">
+        <label for="q5-b">Blockchain</label>
+        <input type="radio" id="q5-c" name="q5" value="Remote sensing">
+        <label for="q5-c">Remote sensing</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q5"></div>
+</div>
+
+<div class="question">
+    <h3>6. What is the main purpose of physiological sonservation in the context of ecological restoration according to this article?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q6-a" name="q6" value="Understanding the physiological limits of species to increase the success of restoration">
+        <label for="q6-a">Understanding the physiological limits of species to increase the success of restoration</label>
+        <input type="radio" id="q6-b" name="q6" value="Determine the largets population in an ecosystem">
+        <label for="q6-b">Determine the largets population in an ecosystem</label>
+        <input type="radio" id="q6-c" name="q6" value="Reduce ecosystem restoration costs">
+        <label for="q6-c">Reduce ecosystem restoration costs</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q6"></div>
+</div>
+
+<div class="question">
+    <h3>7. What are the benefits of using a physiologically based biogeograpic model in 
+        restoration?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q7-a" name="q7" value="Reduce the need for climate data">
+        <label for="q7-a">Reduce the need for climate data</label>
+        <input type="radio" id="q7-b" name="q7" value="Assist in choosing the most suitable location for species translocation">
+        <label for="q7-b">Assist in choosing the most suitable location for species translocation</label>
+        <input type="radio" id="q7-c" name="q7" value="Eliminate the risk of failure in restoration">
+        <label for="q7-c">Eliminate the risk of failure in restoration</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q7"></div>
+</div>
+
+<div class="question">
+    <h3>8. What is meant by “keystone species" as explained in the article?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q8-a" name="q8" value="Species that are always found in all ecosystems">
+        <label for="q8-a">Species that are always found in all ecosystems</label>
+        <input type="radio" id="q8-b" name="q8" value="Species that are vulnerable to climate change">
+        <label for="q8-b">Species that are vulnerable to climate change</label>
+        <input type="radio" id="q8-c" name="q8" value="Species that play a disproportionate role in  the ecological community">
+        <label for="q8-c">Species that play a disproportionate role in  the ecological community</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q8"></div>
+</div>
+
+<div class="question">
+    <h3>9. Why is understanding temperature and water tolerance important for species to 
+        be returned to ex-mining landscapes?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q9-a" name="q9" value="To reduce the need for irrigation">
+        <label for="q9-a">To reduce the need for irrigation</label>
+        <input type="radio" id="q9-b" name="q9" value="To ensure the success of adaptation to a hotter and drier">
+        <label for="q9-b">To ensure the success of adaptation to a hotter and drier</label>
+        <input type="radio" id="q9-c" name="q9" value="To avoid the addition of nectariferous plants">
+        <label for="q9-c">To avoid the addition of nectariferous plants</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q9"></div>
+</div>
+
+<div class="question">
+    <h3>10. What are the main benefits of integrating conservation physiology with high
+        resolution data in the future?</h3>
+    <div class="radio-container">
+        <input type="radio" id="q10-a" name="q10" value="Provide specific guidance for management actions based on time and space">
+        <label for="q10-a">Provide specific guidance for management actions based on time and space</label>
+        <input type="radio" id="q10-b" name="q10" value="Increase efficiency in reporting restoration results">
+        <label for="q10-b">Increase efficiency in reporting restoration results</label>
+        <input type="radio" id="q10-c" name="q10" value="Reduce the need for physiological research in the laboratory">
+        <label for="q10-c">Reduce the need for physiological research in the laboratory</label>
+        <div class="glider-container">
+            <div class="glider"></div>
+        </div>
+    </div>
+    <div class="answer-feedback" id="feedback-q10"></div>
+</div>
+
+    <div class="button-container">
+        <button type="submit" class="submit-button">Submit Quiz</button>
+    </div>
+</form>
+
+    <div class="result" id="result" >
+        <p>Your score: <span style="color: #22ff7e;" id="score"></span> out of 10</p><br>
+    </div>
+
+    <a href="quiz.html" class="back-button">Back</a>
+
+    <script>
+        const correctAnswers = {
+            q1: 'Identifying species-specific physiological needs',
+            q2: 'Pollination by insects',
+            q3: 'By studying species’ physiological stress markers before release',
+            q4: 'Physiological tolerances like temperature and humidity thresholds',
+            q5: 'Remote sensing',
+            q6: 'Understanding the physiological limits of species to increase the success of restoration',
+            q7: 'Assist in choosing the most suitable location for species translocation',
+            q8: 'Species that play a disproportionate role in  the ecological community',
+            q9: 'To ensure the success of adaptation to a hotter and drier',
+            q10: 'Provide specific guidance for management actions based on time and space'
+        };
+
+        const form = document.getElementById('quiz-form');
+        const resultSection = document.getElementById('result');
+        const scoreElement = document.getElementById('score');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = 0;
+
+            for (let i = 1; i <= 10; i++) {
+                const selectedAnswer = form[`q${i}`]?.value;
+                const feedbackElement = document.getElementById(`feedback-q${i}`);
+
+                if (selectedAnswer === correctAnswers[`q${i}`]) {
+                    score++;
+                    feedbackElement.innerHTML = `<span style="color: #22ff7e; font-weight: 800;" class="correct">Correct!</span>`;
+                } else {
+                    feedbackElement.innerHTML = `<span style="color: #ff2828; font-weight: 800;" class="incorrect">Incorrect. Correct answer: ${correctAnswers[`q${i}`]}</span>`;
+                }
+            }
+
+            // Display score
+            scoreElement.textContent = score;
+            resultSection.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

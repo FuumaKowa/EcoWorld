@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #5aad5f, #3f71ee, #5aad5f, #3f71ee);
+            color: #fff;
+            width: 100%;
+            height: 100vh;
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .container {
+            height: fit-content;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0%;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem;
+            opacity: 0;
+            transform: translateY(-50px);
+            animation: fadeInHeader 1.5s forwards;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes fadeInHeader {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content {
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            color: #fff;
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(50px);
+        }
+
+        .content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision {
+            margin-top: 2rem;
+            padding: 2rem;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(50px);
+        }
+
+        .team {
+            margin-top: 4rem;
+            font-size: 1.4rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 1s ease, transform 1s ease;
+            transform: translateY(50px);
+        }
+
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card Styles */
+        .card {
+            margin-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            width: 220px;
+            height: 300px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+            box-shadow: 0 0 0 5px #ffffff80;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .Heading{
+            margin-left: auto;
+            margin-right: auto;
+            height: fit-content;
+            width: fit-content;
+        }
+        .card-wrapper{
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        .card img {
+            width: 240px;
+            height: 320px;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-bottom: 3px solid #8bc34a;
+        }
+
+        .card svg {
+            width: 48px;
+            fill: #333;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .card__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+            transform: rotateX(-90deg);
+            transform-origin: bottom;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity:0.9;
+        }
+
+        .card:hover .card__content {
+            transform: rotateX(0deg);
+        }
+
+        .card__title {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .card:hover svg {
+            scale: 0;
+        }
+
+        .card__description {
+            margin: 10px 0 0;
+            font-size: 14px;
+            color: #777;
+            line-height: 1.4;
+        }
+
+        /* Reference links */
+        .Reference {
+            margin: 1.5rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .containerRef {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .RefName {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #ffd700;
+        }
+
+        .RefTitle {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            color: #ffd700;
+        }
+
+        .link a {
+            color: #87ceeb;
+            text-decoration: none;
+            font-size: 1rem;
+            word-wrap: break-word;
+        }
+
+        .link a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 3rem 1.5rem;
+            }
+
+            .content h2 {
+                font-size: 1.5rem;
+            }
+
+            .team {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+         /* Animation styles */
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo" alt="EcoWorld Logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research & Resources</a></li>
+                <li><a href="fun.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+        <h1>ABOUT <br />ECOWORLD</h1>
+    </header>
+
+    <section class="content fade-in-section" style="--delay: 1s;">
+        <h2>Our Mission</h2>
+        <p>
+            At EcoWorld, our mission is to empower individuals and organizations with the knowledge, tools, and resources to advance ecological restoration through the integration of conservation physiology and the restoration of ecosystem services.
+        </p>
+        <h2>What is Conservation Physiology?</h2>
+        <p>
+            Conservation Physiology studies how plants and animals respond to environmental stresses like climate change, extreme temperatures, pollution, and habitat loss. It provides the framework for targeted actions to protect biodiversity.
+        </p>
+        <h2>Our Alignment with SDG-15</h2>
+        <p>
+            This platform aligns with the United Nations' Sustainable Development Goal 15 (SDG-15): Life on Land, focusing on protecting, restoring, and promoting sustainable use of terrestrial ecosystems.
+        </p>
+    </section>
+
+    <section class="vision fade-in-section" style="--delay: 2s;">
+        <h2>Our Vision</h2>
+        <p>
+            To become a global leader in promoting sustainable development by combining scientific knowledge with practical applications. We envision a world where ecosystems thrive, biodiversity flourishes, and communities work hand-in-hand to ensure the health of our planet.
+        </p>
+    </section>
+
+    <section class="team fade-in-section" style="--delay: 3s;">
+        <h2 class="Heading">Meet Our Team</h2>
+        <div class="card-wrapper">
+            <div class="card fade-in-section" style="--delay: 3.5s;">
+                <img src="images/dina.jpg" alt="dina">
+                <div class="card__content">
+                    <p class="card__title">Irdina</p>
+                    <p class="card__description">Expert in modern web design with a focus on accessibility and user engagement.</p>
+                </div>
+            </div>
+
+            <div class="card fade-in-section" style="--delay: 3.5s;">
+            <img src="images/daniel.jpg" alt="daniel">
+            <div class="card__content">
+                <p class="card__title">Daniel</p>
+                <p class="card__description">Specializes in crafting seamless UI/UX experiences for diverse audiences.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in-section" style="--delay: 3.5s;">
+            <img src="images/azmir.jpg" alt="azmir">
+            <div class="card__content">
+                <p class="card__title">Azmir</p>
+                <p class="card__description">Full-stack developer with expertise in scalable backend solutions.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in-section" style="--delay: 3.5s;">
+            <img src="images/sofia.jpg" alt="sofia">
+            <div class="card__content">
+                <p class="card__title">Sofia</p>
+                <p class="card__description">Leads research initiatives focusing on ecosystem sustainability.</p>
+            </div>
+        </div>
+
+        <div class="card fade-in-section" style="--delay: 3.5s;">
+            <img src="images/wardah.jpg" alt="wardah"><div class="card__content">
+                <p class="card__title">Wardah</p>
+                <p class="card__description">Conservation specialist advocating for biodiversity restoration.</p>
+            </div>
+        </div>
+    </div>
+
+    </section>
+    <section class="Reference fade-in-section"><div class="containerRef"><h2 class="RefTitle">Reference</h2></div></section>
+    <section class="Reference fade-in-section fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">American Solar and Green Energy</h2>
+            <h1 class="link"><a href="https://m.yelp.com/biz_photos/american-solar-and-green-energy-brownsville?select=LZM8kdK7lIxObxqqL8OqIw" target="_blank">https://m.yelp.com/biz_photos/american-solar-and-green-energy-brownsville?select=LZM8kdK7lIxObxqqL8OqIw</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">CP Group Sustainability</h2>
+            <h1 class="link"><a href="https://www.cpgroupglobal.com/en/sustainability/sustainability-at-cp-group/supporting-the-un-sustainable-development-goals-sdgs" target="_blank">https://www.cpgroupglobal.com/en/sustainability/sustainability-at-cp-group/supporting-the-un-sustainable-development-goals-sdgs</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">SDG LinkedIn Post</h2>
+            <h1 class="link"><a href="https://www.linkedin.com/posts/traace_what-are-the-17-un-millennium-development-activity-7257075729715052544-6sdB" target="_blank">https://www.linkedin.com/posts/traace_what-are-the-17-un-millennium-development-activity-7257075729715052544-6sdB</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">Artificial Intelligence for SDGs</h2>
+            <h1 class="link"><a href="https://dasci.es/media/news/study-examines-artificial-intelligence-as-a-means-to-achieve-the-sustainable-development-goals/" target="_blank">https://dasci.es/media/news/study-examines-artificial-intelligence-as-a-means-to-achieve-the-sustainable-development-goals/</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">Geomatics on Instagram</h2>
+            <h1 class="link"><a href="https://www.instagram.com/geomatikaits2021/p/C75rgsTpyk1/" target="_blank">https://www.instagram.com/geomatikaits2021/p/C75rgsTpyk1/</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">Ecosystem Restoration</h2>
+            <h1 class="link"><a href="https://iucn.org/our-work/topic/ecosystem-restoration" target="_blank">https://iucn.org/our-work/topic/ecosystem-restoration</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">SDG 15: Save Ecosystems</h2>
+            <h1 class="link"><a href="https://www.youtube.com/watch?v=j5SxyHXfsqY" target="_blank">https://www.youtube.com/watch?v=j5SxyHXfsqY</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">Crash Course: Conservation and Restoration</h2>
+            <h1 class="link"><a href="https://www.youtube.com/watch?v=Kaeyr5-O2eU" target="_blank">https://www.youtube.com/watch?v=Kaeyr5-O2eU</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">ResearchGate: SDG Implementation</h2>
+            <h1 class="link"><a href="https://www.researchgate.net/publication/291418959_Implementing_SDG_15_Can_largescale_public_programs_help_deliver_biodiversity_conservation_restoration_and_management" target="_blank">https://www.researchgate.net/publication/291418959_Implementing_SDG_15_Can_largescale_public_programs_help_deliver_biodiversity_conservation_restoration_and_management</a></h1>
+        </div>
+    </section>
+
+    <section class="Reference fade-in-section">
+        <div class="containerRef">
+            <h2 class="RefName">PubMed Article</h2>
+            <h1 class="link"><a href="https://pubmed.ncbi.nlm.nih.gov/38699718/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/38699718/</a></h1>
+        </div>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    } else {
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        document.querySelectorAll(".fade-in-section").forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>

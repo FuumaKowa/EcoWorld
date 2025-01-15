@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ECOWORLD</title>
+    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+    background: linear-gradient(45deg, #5aad5f, #3f71ee, #5aad5f, #3f71ee);
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    background-size: 300% 300%; /* Smooth color blending */
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+}
+}
+.logo{
+    width: 120px;
+}
+.container{
+    padding: 10px 10%;
+    align-self: auto;
+}
+.container-nav{
+    height: fit-content;
+    width: 100%;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.4);
+}
+nav ul li{
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+nav ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+}
+nav ul li a:hover::after{
+    width: 100%;
+}
+.video-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+    
+}
+.skills{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    
+}
+.skills img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.layer{
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), #5aad5f);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.skills:hover img{
+    transform: scale(1.1);
+}
+.skills:hover .layer{
+    height: 100%;
+}
+#article{
+    padding: 20px 0;
+    background: linear-gradient(45deg, #5aad5f, #6f471e, #5aad5f, #6f471e);
+    color: #fff;
+    width: 100%;
+    height: 100vh;
+    background-size: 300% 300%; /* Smooth color blending */
+    animation: gradientAnimation 15s ease infinite;
+}
+.article-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.btn{
+  font-family: Oswald;
+  background-color: #deee3f;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.428571429;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+a.btn:hover {
+  background-color: #000;
+  color: #fff;
+}
+</style>
+<body>
+    <div class="container-nav">
+        <nav>
+            <img src="images/logo.png" class="logo" alt="EcoWorld Logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research & Resources</a></li>
+                <li><a href="fun.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+<!----------------------VIDEO PAGE------------------->
+<div id="video">
+    <div class="container">
+        <h1 class="sub-title">VIDEOS</h1>
+        <div class="video-list">
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>LEARNING ABOUT SDG-15:LIFE ON LAND</h3>
+                    <p><a href="https://www.youtube.com/watch?v=UO6EM2gmuGY" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>CRASH COURSE: CONSERVATION AND RESTORATION ECOLOGY</h3>
+                    <p><a href="https://www.youtube.com/watch?v=Kaeyr5-O2eU" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>ECOLOGICAL RESTORATION AND NATURE CONSERVATION</h3>
+                    <p><a href="https://www.youtube.com/watch?v=CIzj6JdB94w" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>ECOSYSTEM SERVICES AND BIODIVERSITY</h3>
+                    <p><a href="https://www.youtube.com/watch?v=D6luBEJfi3s" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>UN DECADE ON ECOSYSTEM RESTORATION: 10 YEARS TO HEAL THE PLANET</h3>
+                    <p><a href="https://www.youtube.com/watch?v=LIPMERHaLKM" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/tree1.jpg">
+                <div class="layer">
+                    <h3>SDG 15 LIFE ON LAND: SAVE ECOSYSTEM AND BIODIVERSITY</h3>
+                    <p><a href="https://www.youtube.com/watch?v=j5SxyHXfsqY" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-----------------------------ARTICLE------------------>
+<div id="article">
+    <div class="container">
+        <h1 class="sub-title">ARTICLE</h1>
+        <div class="article-list">
+            <div class="skills">
+                <img src="images/news.jpg">
+                <div class="layer">
+                    <h3>IMPLEMENTING SDG 15:</h3>
+                    <p><a href="https://www.researchgate.net/publication/291418959_Implementing_SDG_15_Can_large-scale_public_programs_help_deliver_biodiversity_conservation_restoration_and_management_while_assisting_human_development" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/news.jpg">
+                <div class="layer">
+                    <h3>REVIEW AND ASSESSMENT OF THE POTENTIAL RESTORATION OF ECOSYSTEM SERVICES:</h3>
+                    <p><a href="https://pubmed.ncbi.nlm.nih.gov/38699718/" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+            <div class="skills">
+                <img src="images/news.jpg">
+                <div class="layer">
+                    <h3>ECOSYSTEM RESTORATION</h3>
+                    <p><a href="https://iucn.org/our-work/topic/ecosystem-restoration" class="btn">CLICK HERE</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

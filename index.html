@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoWorld</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: url('images/bggif.gif') no-repeat center center fixed;
+            color: #fff;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            backdrop-filter: blur(5px);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .logo {
+            width: 120px;
+        }
+
+        .container {
+            height: fit-content;
+            width: 100%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        nav ul li {
+            display: inline-block;
+            list-style: none;
+            margin: 10px 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            width: 0%;
+            height: 3px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: 0.5s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .home-header {
+        text-align: center;
+        padding: 4rem 2rem;
+        }
+
+        .home-text .welcome {
+            font-size: 5rem;
+            font-weight: 1000;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+            background-color: #69c0696b;
+        }
+
+        .home-text .home-subtext {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+        }
+        
+        /* Cards Section */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            overflow: hidden;
+            color: #fff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 1rem;
+        }
+
+        .card-content h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .card-content a {
+            color: #ff004f;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .carousel-section {
+        padding: 2rem;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        margin: 2rem auto;
+        overflow: hidden;
+        position: relative;
+        }
+        
+        .carousel-title {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .carousel-container {
+            display: flex;
+            gap: 2rem;
+            animation: moveBelt 40s linear infinite;
+            position: relative;
+            width: max-content; 
+        }
+
+        .carousel-container img {
+            width: auto;
+            height: 700px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #fff;
+        }
+
+        @keyframes moveBelt {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .section p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .home-text .welcome {
+                font-size: 2.5rem;
+            }
+
+            .home-text .home-subtext {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .containerTree{ 
+        width: fit-content;
+        height: fit-content;
+        margin: 4rem auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .tree {
+          position: relative;
+          width: 50px;
+          height: 50px;
+          transform-style: preserve-3d;
+          transform: rotateX(-20deg) rotateY(30deg);
+          animation: treeAnimate 5s linear infinite;
+        }
+
+        @keyframes treeAnimate {
+          0% {
+            transform: rotateX(-20deg) rotateY(360deg);
+          }
+      
+          100% {
+            transform: rotateX(-20deg) rotateY(0deg);
+          }
+        }
+
+        .tree div {
+          position: absolute;
+          top: -50px;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transform: translateY(calc(25px * var(--x))) translateZ(0px);
+        }
+
+        .tree div.branch span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, #69c069, #77dd77);
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+          border-bottom: 5px solid #00000019;
+          transform-origin: bottom;
+          transform: rotateY(calc(90deg * var(--i))) rotateX(30deg) translateZ(28.5px);
+        }
+
+        .tree div.stem span {
+          position: absolute;
+          top: 110px;
+          left: calc(50% - 7.5px);
+          width: 15px;
+          height: 50%;
+          background: linear-gradient(90deg, #bb4622, #df7214);
+          border-bottom: 5px solid #00000019;
+          transform-origin: bottom;
+          transform: rotateY(calc(90deg * var(--i))) translateZ(7.5px);
+        }
+
+        .shadow {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.4);
+          filter: blur(20px);
+          transform-style: preserve-3d;
+          transform: rotateX(90deg) translateZ(-65px);
+        }
+        .fade-in-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <img src="images/logo.png" class="logo" alt="EcoWorld Logo">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="research.html">Research & Resources</a></li>
+                <li><a href="fun.html">Activities</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul> 
+        </nav>
+    </div>
+
+    <header class="home-header">
+        <section class="home-text">
+            <h1 class="welcome">WELCOME TO <br /> ECOWORLD</h1>
+            <p class="home-subtext">
+                Advancing ecological restoration through science and sustainable practices.
+            </p>
+        </section>
+         <!-- Tree -->
+         <div class="containerTree">
+            <div class="tree">
+              <div class="branch" style="--x:0">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+              </div>
+              <div class="branch" style="--x:1">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+              </div>
+              <div class="branch" style="--x:2">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+              </div>
+              <div class="branch" style="--x:3">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+              </div>
+              <div class="stem">
+                <span style="--i:0;"></span>
+                <span style="--i:1;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:3;"></span>
+              </div>
+              <span class="shadow"></span>
+            </div>
+          </div>
+    </header>    
+    <div class="cards-container">
+        <div class="card">
+            <img src="https://cdn.shortpixel.ai/spai/q_glossy+w_337+h_161+to_auto+ret_img/www.goodenergy.co.uk/wp-content/uploads/2024/11/Energy-generation-small-scale_AdobeStock_328498395-x1280.jpg" alt="Solar Panels">
+            <div class="card-content">
+                <h2><a href="https://www.goodenergy.co.uk/products/solar-panels/">Solar Panels and Battery Installation</a></h2>
+                <p>Cut your electricity bills and make your home more energy independent.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://cdn.shortpixel.ai/spai/q_glossy+w_337+h_161+to_auto+ret_img/www.goodenergy.co.uk/wp-content/uploads/2024/11/Dec-2023-Photoshoot-Patio-Evening-crop.jpg" alt="Heat Pumps">
+            <div class="card-content">
+                <h2><a href="https://www.goodenergy.co.uk/products/heat-pumps/">Greener Heating with a Heat Pump</a></h2>
+                <p>Upgrade to a heat pump. Get a bespoke heat pump system designed around your home.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://cdn.shortpixel.ai/spai/q_glossy+w_337+h_161+to_auto+ret_img/www.goodenergy.co.uk/wp-content/uploads/2024/11/JC239675-copy.jpg" alt="Renewable Electricity">
+            <div class="card-content">
+                <h2><a href="https://join.goodenergy.co.uk/">100% Renewable Electricity</a></h2>
+                <p>Switch to 100% renewable electricity from independent generators.</p>
+            </div>
+        </div>
+    </div>
+
+     <!-- Showcase Gallery -->
+     <section class="carousel-section">
+        <div class="carousel-container">
+            <!-- Original images -->
+            <img src="images/image1.png" alt="Project 1">
+            <img src="images/image2.jpg" alt="Project 2">
+            <img src="images/image3.png" alt="Project 3">
+            <img src="images/image4.png" alt="Project 4">
+            <img src="images/image5.jpg" alt="Project 5">
+            <img src="images/SDG-report-2023.jpg" alt="Project 6">
+            <img src="images/image7.png" alt="Project 7">
+    
+            <!-- Duplicate images -->
+            <img src="images/image1.png" alt="Project 1">
+            <img src="images/image2.jpg" alt="Project 2">
+            <img src="images/image3.png" alt="Project 3">
+            <img src="images/image4.png" alt="Project 4">
+            <img src="images/image5.jpg" alt="Project 5">
+            <img src="images/SDG-report-2023.jpg" alt="Project 6">
+            <img src="images/image7.png" alt="Project 7">
+        </div>
+    </section>
+
+    <section class="section mission fade-in-section">
+        <h2>Goals</h2>
+        <p>Protect, restore and promote sustainable use of terrestrial ecosystems, sustainably manage forests,</p>
+        <p>combat desertification, and halt and reverse land degradation and halt biodiversity loss</p>
+    </section>
+
+    <section class="section latest-updates fade-in-section">
+        <h2>Latest Updates</h2>
+        <p>Stay informed about our latest projects, including tree plantation drives, ecological workshops, and community restoration initiatives.</p>
+        <p>Our recent endeavors include collaborations with global organizations to restore mangroves and revitalize degraded forests.</p>
+        <p>We are committed to transparency and sharing our progress with our community of eco-warriors.</p>
+    </section>
+
+    <script>
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    } else {
+                        entry.target.classList.remove("visible");
+                    }
+                });
+            },
+            { threshold: 0.1 }
+        );
+
+        document.querySelectorAll(".fade-in-section").forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
